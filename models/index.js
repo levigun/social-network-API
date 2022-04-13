@@ -1,5 +1,5 @@
-import User from './User';
-import Thought from './Thought';
-import Reaction from './Reaction';
+const Thought = require('./Thought');
+const User = require('./User');
+const Reaction = require('./Reaction');
 
-export default { User, Thought, Reaction};
+module.exports = { Thought, User, Reaction};

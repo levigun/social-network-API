@@ -4,14 +4,15 @@ const { User, Thought, Reaction} = require('../models');
 // USERS 
 
 // get all users
-app.get('/users', async (req, res) => {
-    try {
-        const allUsers = await User.find();
-        res.status(200),json(allUsers);
-    } catch (err) {
-        res.status(500).json(err);
-    }  
-});
+app.get('/users', (req, res) => {
+    User.find({}, (err, result) => {
+      if (result) {
+        res.status(200).json(result);
+      } else {
+        res.status(500).json({ error: 'something went wrong' });
+      }
+    });
+  });
 
 // get a single user
 app.get('/users/:_id', async (req, res) => {
@@ -68,13 +69,14 @@ app.delete('/users/:_id/friends/:friendId', async (req, res) => {
 
 // get all thoughts
 app.get('/thoughts', (req, res) => {
-    try {
-        const allThoughts = await Thought.find();
-        res.status(200),json(allThoughts);
-    } catch (err) {
-        res.status(500).json(err);
-    }  
-});
+    Thought.find({}, (err, result) => {
+      if (result) {
+        res.status(200).json(result);
+      } else {
+        res.status(500).json({ error: 'something went wrong' });
+      }
+    });
+  });
 
 // get a single thought
 app.get('/thoughts/:_id', async (req, res) => {
