@@ -58,7 +58,7 @@ app.delete('/users/:_id', async (req, res) => {
 // adding a friend of a specific user
 app.put('/users/:_id/friends/:friendId', async (req,res) => {
     try {
-        const newFriend = await User.findOneAndUpdate({_id: req.params._id}, { friends: req.params.friendId });
+        const newFriend = await User.findOneAndUpdate({_id: req.params._id}, { friends: req.params._id });
         res.status(200).json(newFriend);
     } catch (err) {
         res.status(500).json(err);
@@ -68,7 +68,7 @@ app.put('/users/:_id/friends/:friendId', async (req,res) => {
 // deleting a friend of a specific user
 app.delete('/users/:_id/friends/:friendId', async (req, res) => {
     try {
-        const deletedFriend = await User.findOneAndUpdate({ _id: req.params._id }, { $pull: { friends: req.params.friendId }}, { new: true });
+        const deletedFriend = await User.findOneAndUpdate({ _id: req.params._id }, { $pull: { friends: req.params._id }}, { new: true });
         res.status(200).json(deletedFriend);
     } catch (err) {
         res.status(500).json(err);
