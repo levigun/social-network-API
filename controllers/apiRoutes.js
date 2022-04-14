@@ -28,6 +28,7 @@ app.get('/users/:_id', async (req, res) => {
 app.post('/users', async (req, res) => {
     try {
         const newUser = await User.create({ username: req.body.username, email: req.body.email});
+        res.status(200).json(newUser);
     }
     catch (err) {
         res.status(500).json(err);
@@ -36,6 +37,16 @@ app.post('/users', async (req, res) => {
 
 // update a user
 app.put('/users/:_id', async (req, res) => {
+    try {
+        const updatedUser = await User.findOneAndUpdate({_id: req.params._id}, { username: req.body.username, email: req.body.email });
+        res.status(200).json(updatedUser);
+    } catch (err) {
+        res.status(500).json(err);
+    }
+}); 
+
+// delete a user
+app.delete('/users/:_id', async (req, res) => {
     try {
         const deletedUser = await User.findOneAndDelete({_id: req.params._id});
         res.status(200).json(deletedUser);
