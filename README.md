@@ -36,6 +36,8 @@ To use this command-line application, follow the instructions below:
 
 Video link: 
 
+https://drive.google.com/file/d/1SO59Z4-A1dBRXSctAEmfr11wm2-wsYKl/view?usp=sharing
+
 ## Reference
 
 https://coding-boot-camp.github.io/full-stack/github/professional-readme-guide
